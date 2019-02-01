@@ -13,6 +13,10 @@ function add(req, res) {
 }
 
 function list(req, res) {
+    return mongo.getDB().collection('office').find({}).toArray((err, result) => {
+        if (err) throw err;
+        res.status(200).send({result});
+    });
 }
 
 function get(req, res) {
