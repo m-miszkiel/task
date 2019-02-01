@@ -3,22 +3,33 @@
 
     angular
         .module('testApp')
-        .controller('EmployeesListController', [EmployeesListController]);
+        .controller('EmployeesListController', ['$http', 'SERVER_URL', EmployeesListController]);
 
     /**
      * @ngInject
      */
-    function EmployeesListController() {
+    function EmployeesListController($http, SERVER_URL) {
         var vm = this;
 
         function init(){
 
-            vm.employees = [
-                {
-                    name: 'Michał Miszkiel',
-                    salary: 4000
-                }
-            ];
+            $http({
+                method : "GET",
+                url :  SERVER_URL + 'offices'
+            }).then(function(response) {
+
+                console.log(response);
+
+                vm.employees = response.data;
+
+            });
+
+            // vm.employees = [
+            //     {
+            //         name: 'Michał Miszkiel',
+            //         salary: 4000
+            //     }
+            // ];
 
         }
 

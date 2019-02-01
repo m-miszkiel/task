@@ -40,4 +40,5 @@ var app = angular.module('testApp',
 
         $urlRouterProvider.otherwise('/');
 
-    }]);
+    }])
+    .constant('SERVER_URL', 'http://localhost:3000/');
