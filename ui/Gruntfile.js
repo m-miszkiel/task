@@ -40,7 +40,6 @@ options.html2js = generatePaths('./src/app', 'html');
 options.htmls = generatePaths('./src/app', 'html');
 options.htmls.push('./src/index.html');
 options.jss = generatePaths('./src/app', 'js');
-options.styles = generatePaths('./src/app', 'css');
 
 module.exports = function (grunt) {
 
