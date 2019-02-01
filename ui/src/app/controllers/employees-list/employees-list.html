@@ -1,0 +1,29 @@
+<div class="employees-list-controller">
+
+    <h2>Employees</h2>
+
+    <div class="form-group">
+        <a class="btn btn-primary" href="#" role="button">+ Add</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="employee in vm.employees track by $index">
+            <td>{{employee.name}}</td>
+            <td>{{employee.salary}}</td>
+            <td>
+                <a class="btn btn-primary" href="#" role="button">Edit</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>

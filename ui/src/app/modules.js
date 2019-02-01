@@ -12,13 +12,31 @@ var app = angular.module('testApp',
 
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-        $stateProvider.state('home', {
+        $stateProvider.state('offices', {
             url: '/',
             templateUrl: 'app/controllers/office-list/office-list.html',
             controller: 'OfficeListController',
             controllerAs: 'vm',
             data: {}
         });
+
+
+        $stateProvider.state('employees', {
+            url: '/employees/:id?',
+            templateUrl: 'app/controllers/employees-list/employees-list.html',
+            controller: 'EmployeesListController',
+            controllerAs: 'vm',
+            data: {}
+        });
+
+        $stateProvider.state('employee', {
+            url: '/employee/:id?',
+            templateUrl: 'app/controllers/employee/employee.html',
+            controller: 'EmployeeController',
+            controllerAs: 'vm',
+            data: {}
+        });
+
 
         $urlRouterProvider.otherwise('/');
 
