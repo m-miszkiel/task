@@ -1,0 +1,20 @@
+{
+  "name": "task-ui",
+  "version": "0.1.0",
+  "description": "",
+  "author": "JSQL",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "scripts": {
+    "install" : "npm install",
+    "start": "grunt serve",
+    "build": "grunt build"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0"
+  }
+}
