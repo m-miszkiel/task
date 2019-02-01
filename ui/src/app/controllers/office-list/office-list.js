@@ -3,12 +3,12 @@
 
     angular
         .module('testApp')
-        .controller('HomeController', [HomeController]);
+        .controller('OfficeListController', [OfficeListController]);
 
     /**
      * @ngInject
      */
-    function HomeController() {
+    function OfficeListController() {
         var vm = this;
 
 

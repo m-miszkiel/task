@@ -14,8 +14,8 @@ var app = angular.module('testApp',
 
         $stateProvider.state('home', {
             url: '/',
-            templateUrl: 'app/controllers/home/home.html',
-            controller: 'HomeController',
+            templateUrl: 'app/controllers/office-list/office-list.html',
+            controller: 'OfficeListController',
             controllerAs: 'vm',
             data: {}
         });
