@@ -3,34 +3,39 @@
 
     angular
         .module('testApp')
-        .controller('EmployeesListController', ['$http', 'SERVER_URL', EmployeesListController]);
+        .controller('EmployeesListController', ['$http', 'SERVER_URL', '$stateParams', '$location', EmployeesListController]);
 
     /**
      * @ngInject
      */
-    function EmployeesListController($http, SERVER_URL) {
+    function EmployeesListController($http, SERVER_URL, $stateParams, $location) {
         var vm = this;
+
+        vm.edit = edit;
+        vm.add = add;
 
         function init(){
 
+            let uri = '';
+            if($stateParams.officeId){
+                uri = 'employees/'+$stateParams.officeId;
+            }
+
             $http({
                 method : "GET",
-                url :  SERVER_URL + 'offices'
+                url :  SERVER_URL + uri
             }).then(function(response) {
-
-                console.log(response);
-
-                vm.employees = response.data;
-
+                vm.employees = response.data.result;
             });
 
-            // vm.employees = [
-            //     {
-            //         name: 'Michał Miszkiel',
-            //         salary: 4000
-            //     }
-            // ];
+        }
 
+        function edit(id){
+            $location.path('employee/'+id);
+        }
+
+        function add(){
+            $location.path('office-add-employee/'+$stateParams.officeId);
         }
 
         init();

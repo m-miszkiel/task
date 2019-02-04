@@ -33,13 +33,19 @@ var app = angular.module('testApp',
             controllerAs: 'vm',
             data: {}
         }).state('employees', {
-            url: '/employees/:officeId?',
+            url: '/employees/:officeId',
             templateUrl: 'app/controllers/employees-list/employees-list.html',
             controller: 'EmployeesListController',
             controllerAs: 'vm',
             data: {}
         }).state('employee', {
             url: '/employee/:id?',
+            templateUrl: 'app/controllers/employee/employee.html',
+            controller: 'EmployeeController',
+            controllerAs: 'vm',
+            data: {}
+        }).state('office-add-employee', {
+            url: '/office-add-employee/:officeId?',
             templateUrl: 'app/controllers/employee/employee.html',
             controller: 'EmployeeController',
             controllerAs: 'vm',

@@ -3,20 +3,23 @@
 
     angular
         .module('testApp')
-        .controller('OfficeController', [OfficeController]);
+        .controller('OfficeController', ['$http', '$stateParams', 'SERVER_URL', '$state', OfficeController]);
 
     /**
      * @ngInject
      */
-    function OfficeController($stateParams) {
+    function OfficeController($http, $stateParams, SERVER_URL, $state) {
         var vm = this;
 
         vm.submit = submit;
         vm.office = null;
+        vm.mode = null;
 
         function init() {
 
             if($stateParams.id){
+
+                vm.mode = 'edit';
 
                 $http({
                     method : "GET",
@@ -26,6 +29,8 @@
                 });
 
             }else{
+
+                vm.mode = 'add';
 
                 vm.office =  {
                     id: '',
@@ -39,15 +44,32 @@
 
         function submit(office){
 
-            $http({
-                method : "POST",
-                url :  SERVER_URL + 'office',
-                data: office
-            }).then(function(response) {
+            if(vm.mode === 'add'){
 
-                alert('Saved');
+                $http({
+                    method : "POST",
+                    url :  SERVER_URL + 'office',
+                    data: office
+                }).then(function(response) {
+                    $state.go('offices');
+                });
 
-            });
+            }else {
+
+
+                $http({
+                    method : "PUT",
+                    url :  SERVER_URL + 'office/'+office._id,
+                    data: {
+                        id: office.id,
+                        name: office.name
+                    }
+                }).then(function() {
+                    $state.go('offices');
+                });
+
+            }
+
 
         }
 

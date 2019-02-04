@@ -13,6 +13,8 @@
 
         vm.show = show;
         vm.edit = edit;
+        vm.add = add;
+        vm.offices = [];
 
         function init(){
 
@@ -31,6 +33,10 @@
 
         function edit(id){
             $location.path('office/'+id);
+        }
+
+        function add(){
+            $location.path('office/');
         }
 
         init();

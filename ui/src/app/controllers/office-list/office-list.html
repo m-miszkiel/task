@@ -1,6 +1,11 @@
 <div class="office-list-controller">
 
     <h2>Offices</h2>
+
+    <div class="form-group">
+        <button type="button" ng-click="vm.add()" class="btn btn-primary">+ Add</button>
+    </div>
+
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -17,7 +22,7 @@
             <th scope="row">{{office.office.id}}</th>
             <td>{{office.office.name}}</td>
             <td>{{office.users}}</td>
-            <td>{{office.avgSalary.toFixed(2)}}</td>
+            <td>{{ office.avgSalary ? office.avgSalary.toFixed(2) : '0.00' }}</td>
             <td>
                 <button type="button" ng-click="vm.show(office.office._id)" class="btn btn-primary">Show</button>
             </td>

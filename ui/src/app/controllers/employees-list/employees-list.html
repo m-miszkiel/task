@@ -3,7 +3,7 @@
     <h2>Employees</h2>
 
     <div class="form-group">
-        <a class="btn btn-primary" href="#" role="button">+ Add</a>
+        <button type="button" ng-click="vm.add()" class="btn btn-primary">+ Add</button>
     </div>
 
     <table class="table table-bordered">
@@ -17,9 +17,9 @@
         <tbody>
         <tr ng-repeat="employee in vm.employees track by $index">
             <td>{{employee.name}}</td>
-            <td>{{employee.salary}}</td>
+            <td>{{employee.salary.toFixed(2)}}</td>
             <td>
-                <a class="btn btn-primary" href="#" role="button">Edit</a>
+                <button type="button" ng-click="vm.edit(employee._id)" class="btn btn-primary">Edit</button>
             </td>
         </tr>
 
