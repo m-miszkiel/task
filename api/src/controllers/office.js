@@ -13,10 +13,41 @@ function add(req, res) {
 }
 
 function list(req, res) {
-    return mongo.getDB().collection('office').find({}).toArray((err, result) => {
+
+    mongo.getDB().collection('office').find({}).toArray((err, result) => {
         if (err) throw err;
-        res.status(200).send({result});
+        let response = [];
+        result.forEach((obj, index) => {
+            let users = 0, avgSalary = 0;
+
+            mongo.getDB().collection('employee').find({officeId: obj._id.toString()}).toArray((err, resp) => {
+                if (err) throw err;
+
+                users = resp.length;
+
+                let sum = 0;
+
+                resp.forEach((o) => {
+                    sum += o.salary
+                });
+
+                avgSalary = sum / resp.length;
+
+                response.push({
+                    office: obj,
+                    users: users,
+                    avgSalary: avgSalary
+                });
+
+                if (result.length - 1 === index) {
+                    res.status(200).send({response});
+                }
+
+            });
+
+        });
     });
+
 }
 
 function get(req, res) {
