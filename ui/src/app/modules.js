@@ -20,9 +20,16 @@ var app = angular.module('testApp',
             data: {}
         });
 
+        $stateProvider.state('office', {
+            url: '/office/:id?',
+            templateUrl: 'app/controllers/office/office.html',
+            controller: 'OfficeController',
+            controllerAs: 'vm',
+            data: {}
+        });
 
         $stateProvider.state('employees', {
-            url: '/employees/:id?',
+            url: '/employees/:officeId?',
             templateUrl: 'app/controllers/employees-list/employees-list.html',
             controller: 'EmployeesListController',
             controllerAs: 'vm',

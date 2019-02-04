@@ -15,14 +15,14 @@
         <tbody>
         <tr ng-repeat="office in vm.offices track by $index">
             <th scope="row">{{office.id}}</th>
-            <td>{{office.location}}</td>
+            <td>{{office.name}}</td>
             <td>{{office.employees}}</td>
             <td>{{office.avgSalary}}</td>
             <td>
-                <a class="btn btn-primary" href="#" role="button">Show</a>
+                <button type="button" ng-click="vm.show(office)" class="btn btn-primary">Show</button>
             </td>
             <td>
-                <a class="btn btn-primary" href="#" role="button">Edit</a>
+                <button type="button" ng-click="vm.edit(office)" class="btn btn-primary">Edit</button>
             </td>
         </tr>
 

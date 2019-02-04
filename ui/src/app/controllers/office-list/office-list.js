@@ -11,27 +11,33 @@
     function OfficeListController($http, SERVER_URL) {
         var vm = this;
 
+        vm.show = show;
+        vm.edit = edit;
+
         function init(){
 
             $http({
                 method : "GET",
                 url :  SERVER_URL + 'offices'
             }).then(function(response) {
-
-                console.log(response);
-
-                vm.offices = response.data;
-
+                vm.offices = response.data.result;
             });
 
-            // vm.offices = [
-            //     {
-            //         id: 1,
-            //         location: 'Szczecin',
-            //         employees: 10,
-            //         avgSalary: 4000
-            //     }
-            // ];
+        }
+
+        function show(office){
+
+            $state.go('employees', {
+                officeId: office.id
+            });
+
+        }
+
+        function edit(office){
+
+            $state.go('office', {
+                id: office.id
+            });
 
         }
 

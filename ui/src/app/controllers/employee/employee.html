@@ -1,8 +1,8 @@
-<div class="employees-list-controller">
+<div class="employee-controller">
 
     <h2>Employee</h2>
 
-    <form class="form">
+    <form class="form" ng-submit="vm.submit(vm.employee)">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" class="form-control" placeholder="Name" ng-model="vm.employee.name">
@@ -20,7 +20,7 @@
         </div>
 
         <div class="form-group">
-            <a class="btn btn-primary" href="#" role="button">Save</a>
+            <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
 
