@@ -10,6 +10,14 @@ var app = angular.module('testApp',
 
     }])
 
+    .config(['$locationProvider', function ($locationProvider) {
+
+        if (window.history && window.history.pushState) {
+            $locationProvider.html5Mode(true);
+        }
+
+    }])
+
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider.state('offices', {
@@ -18,32 +26,25 @@ var app = angular.module('testApp',
             controller: 'OfficeListController',
             controllerAs: 'vm',
             data: {}
-        });
-
-        $stateProvider.state('office', {
+        }).state('office', {
             url: '/office/:id?',
             templateUrl: 'app/controllers/office/office.html',
             controller: 'OfficeController',
             controllerAs: 'vm',
             data: {}
-        });
-
-        $stateProvider.state('employees', {
+        }).state('employees', {
             url: '/employees/:officeId?',
             templateUrl: 'app/controllers/employees-list/employees-list.html',
             controller: 'EmployeesListController',
             controllerAs: 'vm',
             data: {}
-        });
-
-        $stateProvider.state('employee', {
+        }).state('employee', {
             url: '/employee/:id?',
             templateUrl: 'app/controllers/employee/employee.html',
             controller: 'EmployeeController',
             controllerAs: 'vm',
             data: {}
         });
-
 
         $urlRouterProvider.otherwise('/');
 

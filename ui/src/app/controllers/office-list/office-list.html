@@ -4,7 +4,7 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Id</th>
             <th scope="col">Location</th>
             <th scope="col">Num of employees</th>
             <th scope="col">Average salary</th>
@@ -14,15 +14,15 @@
         </thead>
         <tbody>
         <tr ng-repeat="office in vm.offices track by $index">
-            <th scope="row">{{office.id}}</th>
-            <td>{{office.name}}</td>
-            <td>{{office.employees}}</td>
-            <td>{{office.avgSalary}}</td>
+            <th scope="row">{{office.office.id}}</th>
+            <td>{{office.office.name}}</td>
+            <td>{{office.users}}</td>
+            <td>{{office.avgSalary.toFixed(2)}}</td>
             <td>
-                <button type="button" ng-click="vm.show(office)" class="btn btn-primary">Show</button>
+                <button type="button" ng-click="vm.show(office.office._id)" class="btn btn-primary">Show</button>
             </td>
             <td>
-                <button type="button" ng-click="vm.edit(office)" class="btn btn-primary">Edit</button>
+                <button type="button" ng-click="vm.edit(office.office._id)" class="btn btn-primary">Edit</button>
             </td>
         </tr>
 

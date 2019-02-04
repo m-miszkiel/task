@@ -3,12 +3,12 @@
 
     angular
         .module('testApp')
-        .controller('OfficeListController', ['$http', 'SERVER_URL', OfficeListController]);
+        .controller('OfficeListController', ['$http', 'SERVER_URL', '$location', OfficeListController]);
 
     /**
      * @ngInject
      */
-    function OfficeListController($http, SERVER_URL) {
+    function OfficeListController($http, SERVER_URL, $location) {
         var vm = this;
 
         vm.show = show;
@@ -20,25 +20,17 @@
                 method : "GET",
                 url :  SERVER_URL + 'offices'
             }).then(function(response) {
-                vm.offices = response.data.result;
+                vm.offices = response.data.response;
             });
 
         }
 
-        function show(office){
-
-            $state.go('employees', {
-                officeId: office.id
-            });
-
+        function show(id){
+            $location.path('employees/'+id);
         }
 
-        function edit(office){
-
-            $state.go('office', {
-                id: office.id
-            });
-
+        function edit(id){
+            $location.path('office/'+id);
         }
 
         init();

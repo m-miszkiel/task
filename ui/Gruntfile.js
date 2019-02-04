@@ -43,6 +43,8 @@ options.jss = generatePaths('./src/app', 'js');
 
 module.exports = function (grunt) {
 
+    var history = require('connect-history-api-fallback');
+
     require('load-grunt-tasks')(grunt);
     require('time-grunt')(grunt);
     grunt.loadNpmTasks('grunt-html2js');
@@ -51,8 +53,12 @@ module.exports = function (grunt) {
 
         connect: {
             options: {
-                port: 9000,
-                hostname: 'localhost'
+                port: 9090,
+                hostname: 'localhost',
+                middleware: function (connect, options, middleware) {
+                    middleware.unshift(history());
+                    return middleware;
+                }
             },
             dist: {
                 options: {
